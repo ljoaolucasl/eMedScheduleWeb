@@ -1,0 +1,31 @@
+.btn-adicionar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed !important;
+  bottom: 25px;
+  right: 25px;
+  transform: scale(1) !important;
+  z-index: 1000;
+}
+
+.overlay-botoes-row {
+  display: flex;
+  gap: 4px;
+  position: fixed;
+  bottom: 23px;
+  right: 23px;
+
+  z-index: 1000;
+}
+
+.overlay-botoes-column {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: fixed;
+  bottom: 23px;
+  right: 23px;
+
+  z-index: 1000;
+}

@@ -1,0 +1,132 @@
+@use "@angular/material" as mat;
+
+@include mat.core();
+
+$e-agenda-web-primary-dark: mat.define-palette(mat.$orange-palette, A100, A400);
+$e-agenda-web-accent-dark: mat.define-palette(
+  mat.$light-green-palette,
+  A700,
+  A400,
+  A200
+);
+$e-agenda-web-warn-dark: mat.define-palette(mat.$red-palette, 200, 400);
+$e-agenda-web-theme-color-dark: mat.define-palette(
+  mat.$blue-grey-palette,
+  900,
+  A700
+);
+
+$e-agenda-web-theme-dark: mat.define-dark-theme(
+  (
+    color: (
+      primary: $e-agenda-web-primary-dark,
+      accent: $e-agenda-web-accent-dark,
+      warn: $e-agenda-web-warn-dark,
+      surface: #feffff,
+      theme-color: $e-agenda-web-theme-color-dark,
+    ),
+  )
+);
+
+$e-agenda-web-primary-light: mat.define-palette(mat.$deep-purple-palette);
+$e-agenda-web-accent-light: mat.define-palette(mat.$pink-palette);
+$e-agenda-web-warn-light: mat.define-palette(mat.$red-palette);
+$e-agenda-web-theme-color-light: mat.define-palette(
+  mat.$grey-palette,
+  900,
+  A700
+);
+
+$e-agenda-web-theme-light: mat.define-light-theme(
+  (
+    color: (
+      primary: $e-agenda-web-primary-light,
+      accent: $e-agenda-web-accent-light,
+      warn: $e-agenda-web-warn-light,
+      surface: #feffff,
+      theme-color: $e-agenda-web-theme-color-light,
+    ),
+  )
+);
+
+.light-theme {
+  @include mat.all-component-themes($e-agenda-web-theme-light);
+
+  .primary {
+    color: #6b38fb;
+  }
+
+  .accent {
+    color: #ff49ed;
+  }
+
+  .warn {
+    color: rgb(230, 0, 0);
+  }
+
+  .surface {
+    color: #feffff !important;
+  }
+
+  .theme-color {
+    color: black !important;
+  }
+
+  .bg-primary {
+    background: #6b38fb !important;
+  }
+
+  .bg-theme-color {
+    opacity: 1 !important;
+    background: rgb(0, 0, 0, 1) 00 !important;
+  }
+}
+
+.dark-theme {
+  @include mat.all-component-themes($e-agenda-web-theme-dark);
+
+  .primary {
+    color: #e0a030;
+  }
+
+  .accent {
+    color: #30e048;
+  }
+
+  .warn {
+    color: rgb(255, 78, 78);
+  }
+
+  .surface {
+    color: #3f3f3f !important;
+  }
+
+  .theme-color {
+    color: white !important;
+  }
+
+  .bg-primary {
+    background: #e0a030 !important;
+  }
+
+  .bg-theme-color {
+    opacity: 1 !important;
+    background: rgb(255, 255, 255, 1) !important;
+  }
+
+  .bg-dark {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+  }
+}
+
+@import "bootstrap/scss/bootstrap";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

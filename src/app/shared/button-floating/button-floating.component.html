@@ -1,0 +1,32 @@
+<div
+  [ngClass]="{
+    'overlay-botoes-row': !multi && direcao === 'row',
+    'overlay-botoes-column': !multi && direcao == 'column'
+  }"
+>
+  <ng-content></ng-content>
+  <button
+    *ngIf="!mini"
+    mat-fab
+    [color]="color"
+    [attr.aria-label]="nome"
+    [routerLink]="rota ? [rota] : []"
+    [matTooltip]="nome"
+    [type]="tipo"
+    (click)="executarFuncao()"
+  >
+    <mat-icon>{{ icone }}</mat-icon>
+  </button>
+  <button
+    *ngIf="mini"
+    mat-mini-fab
+    [color]="color"
+    [attr.aria-label]="nome"
+    [routerLink]="rota ? [rota] : []"
+    [matTooltip]="nome"
+    [type]="tipo"
+    (click)="executarFuncao()"
+  >
+    <mat-icon>{{ icone }}</mat-icon>
+  </button>
+</div>

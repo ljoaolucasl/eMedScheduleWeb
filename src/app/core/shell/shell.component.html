@@ -1,0 +1,85 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+  >
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item class="p-0">
+        <button
+          class="w-100 rounded-0"
+          mat-fab
+          extended
+          color="theme-color"
+          routerLinkActive="fw-medium bg-primary surface"
+          routerLink="/doctor/list"
+        >
+          <mat-icon>person</mat-icon>Doctor
+        </button>
+      </mat-list-item>
+      <mat-list-item class="p-0">
+        <button
+          class="w-100 rounded-0"
+          mat-fab
+          extended
+          color="theme-color"
+          routerLinkActive="fw-medium bg-primary surface"
+          routerLink="/activity/list"
+        >
+          <mat-icon>calendar_today</mat-icon>Activity
+        </button>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="theme-color">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <!-- *ngIf="(isAuthorized$ | async) == true" -->
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <a class="navbar-brand fw-semibold" routerLink="/">
+        <i class="bi bi-calendar-range primary ms-2 fs-4"></i>
+        <span class="mx-2 fs-4 me-4 theme-color">e-Med</span>
+      </a>
+
+      <!-- *ngIf="(isAuthorized$ | async) == true && (isHandset$ | async) == false" -->
+      <ng-container *ngIf="(isHandset$ | async) == false">
+        <div class="links w-100 text-center d-flex gap-3">
+          <a
+            class="nav-link primary btn"
+            routerLinkActive="fw-medium theme-color"
+            routerLink="/doctor/list"
+          >
+            Doctor
+          </a>
+          <a
+            class="nav-link primary btn"
+            routerLinkActive="fw-medium theme-color"
+            routerLink="/activity/list"
+          >
+            Activity
+          </a>
+        </div>
+      </ng-container>
+      <mat-slide-toggle
+        #themeSwitch
+        matTooltip="Mudar Tema"
+        [checked]="chosenTheme ? false : true"
+        color="primary"
+        class="ms-4"
+        (change)="toggleTheme()"
+      >
+      </mat-slide-toggle>
+    </mat-toolbar>
+
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
