@@ -1,0 +1,47 @@
+<mat-card appCardHover class="mb-4 h-100">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image">
+      <img
+        class="img-fluid rounded-circle"
+        [src]="
+          doctor.profilePictureBase64 != ''
+            ? 'data:image/png;base64,' + doctor.profilePictureBase64
+            : 'assets/default-avatar.jpg'
+        "
+        mat-card-image
+        alt="Doctor Profile"
+      />
+    </div>
+    <mat-card-title class="mb-1">{{ doctor.name }}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-actions class="d-flex col gap-2 justify-content-end">
+    <button
+      routerLink="/doctor/edit/{{ doctor.id }}"
+      mat-icon-button
+      aria-label="Edit"
+      matTooltip="Edit"
+      matTooltipPosition="below"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button
+      routerLink="/doctor/delete/{{ doctor.id }}"
+      mat-icon-button
+      aria-label="Delete"
+      matTooltip="Delete"
+      matTooltipPosition="below"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button
+      routerLink="/doctor/details/{{ doctor.id }}"
+      mat-icon-button
+      aria-label="Details"
+      matTooltip="Details"
+      matTooltipPosition="below"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

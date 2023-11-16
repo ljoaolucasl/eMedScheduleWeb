@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from './core/theme/services/theme.service';
+import { AuthService } from './core/auth/services/auth.service';
+import { UserTokenViewModel } from './core/auth/models/user-token.view-model';
 
 @Component({
   selector: 'app-root',

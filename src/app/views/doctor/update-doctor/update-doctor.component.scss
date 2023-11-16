@@ -1,0 +1,30 @@
+.edit-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.choose-image-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+label {
+  position: relative;
+  cursor: pointer;
+}

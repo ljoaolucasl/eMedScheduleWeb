@@ -7,10 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
+import { NgOptimizedImage, provideImgixLoader } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
-  providers: [],
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,
@@ -21,5 +21,6 @@ import { CoreModule } from './core/core.module';
     CoreModule,
     HttpClientModule,
   ],
+  providers: [],
 })
 export class AppModule {}

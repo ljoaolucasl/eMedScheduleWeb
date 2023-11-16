@@ -10,6 +10,7 @@ import { CardHoverDirective } from './directives/card-hover.directive';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [CardHoverDirective, ButtonFloatingComponent],
@@ -23,6 +24,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
   exports: [
     CommonModule,
     CardHoverDirective,
+    ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,

@@ -1,0 +1,33 @@
+<section>
+  <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+  <div class="container mt-5">
+    <h1 class="primary">Doctor List</h1>
+    <div class="d-flex justify-content-between align-items-center">
+      <button
+        *ngIf="!(breakpointService.isHandset$ | async)"
+        routerLink="/doctor/add"
+        mat-fab
+        extended
+        color="primary"
+        class=""
+      >
+        <mat-icon>add_circle_outline</mat-icon> New Doctor
+      </button>
+      <app-button-floating
+        *ngIf="breakpointService.isHandset$ | async"
+        [nome]="'New Doctor'"
+        [icone]="'add'"
+        [rota]="'/doctor/add'"
+      ></app-button-floating>
+    </div>
+
+    <div class="row mt-4">
+      <div
+        *ngFor="let doctor of data"
+        class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4"
+      >
+        <app-card-doctor *ngIf="!isLoading" [doctor]="doctor"></app-card-doctor>
+      </div>
+    </div>
+  </div>
+</section>

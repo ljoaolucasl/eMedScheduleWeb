@@ -16,7 +16,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class AuthService {
-  private url: string = 'https://e-agenda-web-api.onrender.com/api/conta/';
+  private url: string = 'https://localhost:7069/api/';
   private endpointRegistration: string = 'register';
   private endpointLogin: string = 'authenticate';
   private endpointLogout: string = 'logout';
@@ -36,12 +36,12 @@ export class AuthService {
     return this.authenticatedUser.asObservable();
   }
 
-  public registrar(data: RegisterViewModel): Observable<TokenViewModel> {
+  public register(data: RegisterViewModel): Observable<TokenViewModel> {
     return this.http.post<any>(this.url + this.endpointRegistration, data).pipe(
       map((res) => res.data),
       tap((data: TokenViewModel) => {
         this.localStorage.saveData(data);
-        this.notificarLogin(data.userToken);
+        this.notifyLogin(data.userToken);
       }),
       catchError((error) => this.processError(error))
     );
@@ -52,7 +52,7 @@ export class AuthService {
       map((res) => res.data),
       tap((data: TokenViewModel) => {
         this.localStorage.saveData(data);
-        this.notificarLogin(data.userToken);
+        this.notifyLogin(data.userToken);
       }),
       catchError((error) => this.processError(error))
     );
@@ -63,30 +63,34 @@ export class AuthService {
       map((res) => res.data),
       tap(() => {
         this.localStorage.deleteData();
-        this.notificarLogout();
+        this.notifyLogout();
       }),
       catchError((error) => this.processError(error))
     );
   }
 
-  public loginUsuarioSalvo() {
-    const data = this.obterDados();
+  public savedUserLogin() {
+    const data = this.getData();
 
     if (!data) return;
 
     if (new Date(data.expirationDate) > new Date())
-      this.notificarLogin(data!.userToken);
+      this.notifyLogin(data!.userToken);
   }
 
-  public obterDados(): TokenViewModel | undefined {
+  public getData(): TokenViewModel | undefined {
     return this.localStorage.loadingData();
   }
 
-  private notificarLogin(user: UserTokenViewModel) {
+  private notifyLogin(user: UserTokenViewModel) {
     this.authenticatedUser?.next(user);
   }
 
-  private notificarLogout() {
+  public notifyLoginTest(user: UserTokenViewModel) {
+    this.authenticatedUser?.next(user);
+  }
+
+  private notifyLogout() {
     this.authenticatedUser?.next(undefined);
   }
 

@@ -3,8 +3,10 @@
     #drawer
     class="sidenav"
     fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [attr.role]="
+      (breakpointService.isHandset$ | async) ? 'dialog' : 'navigation'
+    "
+    [mode]="(breakpointService.isHandset$ | async) ? 'over' : 'side'"
   >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
@@ -50,8 +52,8 @@
         <span class="mx-2 fs-4 me-4 theme-color">e-Med</span>
       </a>
 
-      <!-- *ngIf="(isAuthorized$ | async) == true && (isHandset$ | async) == false" -->
-      <ng-container *ngIf="(isHandset$ | async) == false">
+      <!-- *ngIf="(isAuthorized$ | async) == true && (breakpointService.isHandset$ | async) == false" -->
+      <ng-container *ngIf="(breakpointService.isHandset$ | async) == false">
         <div class="links w-100 text-center d-flex gap-3">
           <a
             class="nav-link primary btn"

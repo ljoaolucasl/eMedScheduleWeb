@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { Observable, map, shareReplay } from 'rxjs';
 import { AuthService } from '../auth/services/auth.service';
 import { ThemeService } from '../theme/services/theme.service';
+import { BreakpointObserverService } from '../mobile-responsive/services/breakpoint-observer.service';
 
 @Component({
   selector: 'app-shell',
@@ -18,11 +19,11 @@ import { ThemeService } from '../theme/services/theme.service';
   styleUrls: ['./shell.component.scss'],
 })
 export class ShellComponent implements OnInit, AfterViewInit {
-  private breakpointObserver = inject(BreakpointObserver);
   isAuthorized$?: Observable<boolean>;
   chosenTheme!: boolean;
 
   constructor(
+    public breakpointService: BreakpointObserverService,
     private authService: AuthService,
     private router: Router,
     private themeService: ThemeService
@@ -47,13 +48,6 @@ export class ShellComponent implements OnInit, AfterViewInit {
         .firstChild.setAttribute('d', this.dark);
     }
   }
-
-  isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe([Breakpoints.XSmall, Breakpoints.Small])
-    .pipe(
-      map((result) => result.matches),
-      shareReplay()
-    );
 
   ngOnInit(): void {
     this.isAuthorized$ = this.authService.getAuthenticatedUser().pipe(
