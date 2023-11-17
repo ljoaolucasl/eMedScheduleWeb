@@ -22,9 +22,9 @@ export abstract class AddData<
 
   protected addData() {
     if (this.form.invalid) {
-      // for (let erro of this.form.validate()) {
-      //   this.notificationService.warning(erro);
-      // }
+      for (let erro of this.form.validate()) {
+        this.notificationService.warning(erro);
+      }
 
       return;
     }

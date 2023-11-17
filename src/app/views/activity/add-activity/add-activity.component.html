@@ -1,1 +1,155 @@
-<p>add-activity works!</p>
+<section class="mt-3">
+  <div class="container py-4">
+    <h1 class="primary text-center">Insert New Activity</h1>
+
+    <form [formGroup]="form" (ngSubmit)="addData()">
+      <div class="row mt-4 justify-content-center">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <mat-form-field class="col-12">
+              <mat-label>Title</mat-label>
+              <textarea
+                matInput
+                type="text"
+                id="title"
+                class=""
+                formControlName="title"
+                [ngClass]="invalidField('title') ? 'is-invalid' : ''"
+                placeholder="Enter Title"
+              ></textarea>
+              <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+          </div>
+
+          <div class="mb-3">
+            <mat-form-field class="col-12">
+              <mat-label>Start Time</mat-label>
+              <input
+                matInput
+                type="time"
+                id="startTime"
+                class=""
+                formControlName="startTime"
+                [ngClass]="invalidField('startTime') ? 'is-invalid' : ''"
+                placeholder="Enter Start Time"
+              />
+              <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+          </div>
+
+          <div class="mb-3">
+            <mat-form-field class="col-12">
+              <mat-label>End Time</mat-label>
+              <input
+                matInput
+                type="time"
+                id="endTime"
+                class=""
+                formControlName="endTime"
+                [ngClass]="invalidField('endTime') ? 'is-invalid' : ''"
+                placeholder="Enter End Time"
+              />
+              <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+          </div>
+
+          <div class="mb-3">
+            <mat-form-field class="col-12">
+              <mat-label>Choose a date</mat-label>
+              <input
+                matInput
+                formControlName="date"
+                required
+                id="date"
+                placeholder="Enter Date"
+                [ngClass]="invalidField('date') ? 'is-invalid' : ''"
+                [matDatepicker]="picker"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="mb-3">
+            <mat-form-field>
+              <mat-label>Select Activity Type</mat-label>
+              <mat-select
+                formControlName="activityType"
+                required
+                id="activityType"
+                placeholder="Enter Activity"
+                [ngClass]="invalidField('activityType') ? 'is-invalid' : ''"
+              >
+                <mat-option [value]="0">Appointment</mat-option>
+                <mat-option [value]="1">Surgery</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="mb-3">
+            <mat-form-field>
+              <mat-label>Doctors</mat-label>
+              <mat-select
+                formControlName="selectedDoctors"
+                required
+                id="selectedDoctors"
+                placeholder="Enter Doctors"
+                [ngClass]="invalidField('selectedDoctors') ? 'is-invalid' : ''"
+                multiple
+              >
+                <mat-select-trigger>
+                  {{ form.get("selectedDoctors")?.value[0] || "" }}
+                  <span
+                    *ngIf="(form.get('selectedDoctors')?.value.length || 0) > 1"
+                    class="example-additional-selection"
+                  >
+                    (+{{
+                      (form.get("selectedDoctors")?.value.length || 0) - 1
+                    }}
+                    {{
+                      form.get("selectedDoctors")?.value.length === 2
+                        ? "other"
+                        : "others"
+                    }})
+                  </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let doctor of doctors" [value]="doctor">{{
+                  doctor.name
+                }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="text-center">
+            <app-button-floating
+              *ngIf="breakpointService.isHandset$ | async"
+              [tipo]="'submit'"
+              [nome]="'Insert'"
+              [icone]="'add'"
+              ><app-button-floating
+                *ngIf="breakpointService.isHandset$ | async"
+                [rota]="'/doctor/list'"
+                [nome]="'Back'"
+                [color]="'accent'"
+                [icone]="'home'"
+                [multi]="true"
+              ></app-button-floating
+            ></app-button-floating>
+            <button
+              *ngIf="!(breakpointService.isHandset$ | async)"
+              mat-fab
+              extended
+              type="submit"
+              color="primary"
+            >
+              <mat-icon>add_circle_outline</mat-icon> Insert Activity
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

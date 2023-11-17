@@ -10,7 +10,10 @@ import { CardHoverDirective } from './directives/card-hover.directive';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [CardHoverDirective, ButtonFloatingComponent],
@@ -31,8 +34,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatCardModule,
     MatProgressBarModule,
-    MatFormFieldModule,
     ButtonFloatingComponent,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    FormsModule,
   ],
 })
 export class SharedModule {}

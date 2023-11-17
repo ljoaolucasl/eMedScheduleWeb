@@ -1,1 +1,59 @@
-<p>card-activity works!</p>
+<mat-card appCardHover class="mb-4 h-100">
+  <mat-card-header>
+    <mat-card-title class="mb-1 fs-5">{{ activity.title }}</mat-card-title>
+    <mat-card-title class="my-2 primary fw-medium">{{
+      activity.activityType == 0 ? "Appointment" : "Surgery"
+    }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="d-grid gap-2">
+    <mat-card-subtitle class="fw-medium"
+      >Date:
+      <span class="theme-color">{{
+        activity.date | date : "dd/MM/yyyy"
+      }}</span></mat-card-subtitle
+    >
+
+    <mat-card-subtitle class="fw-medium"
+      >Start Time:
+      <span class="theme-color">{{
+        activity.startTime.substring(0, 5)
+      }}</span></mat-card-subtitle
+    >
+    <mat-card-subtitle class="fw-medium"
+      >End Time:
+      <span class="theme-color">{{
+        activity.endTime.substring(0, 5)
+      }}</span></mat-card-subtitle
+    >
+  </mat-card-content>
+
+  <mat-card-actions class="d-flex col gap-2 justify-content-end">
+    <button
+      routerLink="/activity/edit/{{ activity.id }}"
+      mat-icon-button
+      aria-label="Edit"
+      matTooltip="Edit"
+      matTooltipPosition="below"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button
+      routerLink="/activity/delete/{{ activity.id }}"
+      mat-icon-button
+      aria-label="Delete"
+      matTooltip="Delete"
+      matTooltipPosition="below"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button
+      routerLink="/activity/details/{{ activity.id }}"
+      mat-icon-button
+      aria-label="Details"
+      matTooltip="Details"
+      matTooltipPosition="below"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

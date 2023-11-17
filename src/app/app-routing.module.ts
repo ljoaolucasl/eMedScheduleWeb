@@ -9,6 +9,12 @@ const routes: Routes = [
       import('./views/doctor/doctor.module').then((d) => d.DoctorModule),
     // canActivate: [authGuard],
   },
+  {
+    path: 'activity',
+    loadChildren: () =>
+      import('./views/activity/activity.module').then((d) => d.ActivityModule),
+    // canActivate: [authGuard],
+  },
 ];
 
 @NgModule({

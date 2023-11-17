@@ -66,9 +66,9 @@ export class UpdateDoctorComponent
       });
 
     if (this.form.invalid) {
-      // for (let error of this.form.validate()) {
-      //   this.notificationService.warning(error);
-      // }
+      for (let error of this.form.validate()) {
+        this.notificationService.warning(error);
+      }
 
       return;
     }

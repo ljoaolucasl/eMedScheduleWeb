@@ -1,1 +1,46 @@
-<p>dashboard works!</p>
+<section class="mt-5">
+  <div class="container">
+    <mat-card class="mat-elevation-z2 mat-bg-container">
+      <mat-card-content class="d-flex flex-row row align-items-center gy-3 p-5">
+        <div class="col-lg-7 col-md-6 col-12 mb-4">
+          <mat-card-title class="fw-semibold fs-1 primary"
+            >User Panel</mat-card-title
+          >
+          <mat-card-title class="fw-semibold fs-2 primary">
+            Welcome, {{ (user$ | async)?.name }}!
+          </mat-card-title>
+          <mat-card-content class="my-4 theme-color">
+            <span class="fw-medium">eMed</span> seeks simplicity and efficiency,
+            bringing an intuitive experience to the management of doctors and
+            their activities. With eMed, you have full control over schedules,
+            facilitating organization and optimizing efficiency.
+            <span class="fw-medium">What do you want to manage?</span>
+          </mat-card-content>
+          <section id="buttons" class="d-grid gap-3">
+            <button
+              routerLink="/doctor/list"
+              mat-fab
+              extended
+              color="primary"
+              class="mx-2"
+            >
+              <mat-icon>person</mat-icon> Doctors
+            </button>
+            <button
+              routerLink="/activity/list"
+              mat-fab
+              extended
+              color="primary"
+              class="mx-2"
+            >
+              <mat-icon>calendar_today</mat-icon> Activities
+            </button>
+          </section>
+        </div>
+        <div class="col-12 col-lg-5 col-md-6">
+          <!-- <img src="assets/dashboard-image.svg" class="img-fluid" /> -->
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>

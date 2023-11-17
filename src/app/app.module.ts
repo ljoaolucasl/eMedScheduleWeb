@@ -8,6 +8,8 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { NgOptimizedImage, provideImgixLoader } from '@angular/common';
+import { DashboardModule } from './views/dashboard/dashboard.module';
+import './extensions/form-group.extension';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +22,7 @@ import { NgOptimizedImage, provideImgixLoader } from '@angular/common';
     SharedModule,
     CoreModule,
     HttpClientModule,
+    DashboardModule,
   ],
   providers: [],
 })

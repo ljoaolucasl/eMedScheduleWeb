@@ -122,11 +122,103 @@ $e-agenda-web-theme-light: mat.define-light-theme(
 
 @import "bootstrap/scss/bootstrap";
 
-html,
-body {
-  height: 100%;
-}
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html:has(.dark-theme) {
+  --mdc-elevated-card-container-color: #424242;
+  --mdc-outlined-card-container-color: #424242;
+  --mat-select-panel-background-color: #424242;
+  --mat-autocomplete-background-color: #424242;
+  --mdc-dialog-container-color: #424242;
+  --mat-menu-container-color: #424242;
+  --mat-paginator-container-background-color: #424242;
+  --mdc-filled-button-container-color: #424242;
+  --mdc-protected-button-container-color: #424242;
+  --mdc-fab-container-color: #424242;
+  --mat-table-background-color: #424242;
+  --mat-bottom-sheet-container-background-color: #424242;
+  --mat-legacy-button-toggle-disabled-selected-state-background-color: #424242;
+  --mat-standard-button-toggle-background-color: #424242;
+  --mat-standard-button-toggle-disabled-state-background-color: #424242;
+  --mat-standard-button-toggle-disabled-selected-state-background-color: #424242;
+  --mat-datepicker-calendar-container-background-color: #424242;
+  --mat-expansion-container-background-color: #424242;
+  --mat-stepper-container-color: #424242;
+}
+
+html:has(.dark-theme) {
+  --mat-datepicker-calendar-date-selected-state-text-color: white;
+  --mat-datepicker-calendar-date-selected-state-background-color: #ad7a21;
+  --mat-datepicker-calendar-date-selected-disabled-state-background-color: #927749;
+  --mat-datepicker-calendar-date-today-selected-state-outline-color: white;
+  --mat-datepicker-calendar-date-focus-state-background-color: #927749;
+  --mat-datepicker-calendar-date-hover-state-background-color: #927749;
+  --mat-datepicker-toggle-active-state-icon-color: #ad7a21;
+  --mat-datepicker-calendar-date-in-range-state-background-color: #927749;
+  --mat-datepicker-calendar-date-in-comparison-range-state-background-color: #f9ab0033;
+  --mat-datepicker-calendar-date-text-color: white;
+  --mat-datepicker-calendar-date-outline-color: transparent;
+  --mat-datepicker-calendar-date-disabled-state-text-color: #ffffff80;
+  --mat-datepicker-calendar-date-preview-state-outline-color: #ffffff3d;
+  --mat-datepicker-range-input-separator-color: white;
+  --mat-datepicker-range-input-disabled-state-separator-color: #ffffff80;
+  --mat-datepicker-range-input-disabled-state-text-color: #ffffff80;
+  --mat-datepicker-calendar-container-text-color: white;
+}
+
+html:has(.light-theme) {
+  --mdc-elevated-card-container-color: #ffffff;
+  --mdc-outlined-card-container-color: #ffffff;
+  --mat-select-panel-background-color: #ffffff;
+  --mat-autocomplete-background-color: #ffffff;
+  --mdc-dialog-container-color: #ffffff;
+  --mat-menu-container-color: #ffffff;
+  --mat-paginator-container-background-color: #ffffff;
+  --mdc-filled-button-container-color: #ffffff;
+  --mdc-protected-button-container-color: #ffffff;
+  --mdc-fab-container-color: #ffffff;
+  --mat-table-background-color: #ffffff;
+  --mat-bottom-sheet-container-background-color: #ffffff;
+  --mat-legacy-button-toggle-disabled-selected-state-background-color: #ffffff;
+  --mat-standard-button-toggle-background-color: #ffffff;
+  --mat-standard-button-toggle-disabled-state-background-color: #ffffff;
+  --mat-standard-button-toggle-disabled-selected-state-background-color: #ffffff;
+  --mat-expansion-container-background-color: #ffffff;
+  --mat-stepper-container-color: #ffffff;
+}
+
+html:has(.light-theme) {
+  --mat-datepicker-calendar-date-selected-state-text-color: #424242;
+  --mat-datepicker-calendar-date-selected-state-background-color: #926bff;
+  --mat-datepicker-calendar-date-selected-disabled-state-background-color: #8b73b6;
+  --mat-datepicker-calendar-date-today-selected-state-outline-color: #424242;
+  --mat-datepicker-calendar-date-focus-state-background-color: #8b73b6;
+  --mat-datepicker-calendar-date-hover-state-background-color: #8b73b6;
+  --mat-datepicker-toggle-active-state-icon-color: #926bff;
+  --mat-datepicker-calendar-date-in-range-state-background-color: #8b73b6;
+  --mat-datepicker-calendar-date-in-comparison-range-state-background-color: #f9ab0033;
+  --mat-datepicker-calendar-date-text-color: #424242;
+  --mat-datepicker-calendar-date-outline-color: transparent;
+  --mat-datepicker-calendar-date-disabled-state-text-color: #ffffff80;
+  --mat-datepicker-calendar-date-preview-state-outline-color: #ffffff3d;
+  --mat-datepicker-range-input-separator-color: #424242;
+  --mat-datepicker-range-input-disabled-state-separator-color: #ffffff80;
+  --mat-datepicker-range-input-disabled-state-text-color: #ffffff80;
+  --mat-datepicker-calendar-container-background-color: white;
+  --mat-datepicker-calendar-container-text-color: #424242;
+}
+
+body:has(.dark-theme) {
+  background-color: #303030 !important;
+  background: #303030 !important;
+  color: #fff !important;
+}
+
+body:has(.light-theme) {
+  background-color: #fafafa !important;
+  background: #fafafa !important;
+  color: #000000 !important;
 }
