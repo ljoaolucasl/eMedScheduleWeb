@@ -14,7 +14,7 @@ export class NotificationComponent {
   snackBarRef = inject(MatSnackBarRef);
 
   get getIcon() {
-    switch (this.data.tipo) {
+    switch (this.data.type) {
       case 'success':
         return 'check';
       case 'error':

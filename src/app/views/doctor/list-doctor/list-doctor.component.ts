@@ -24,6 +24,5 @@ export class ListDoctorComponent extends ListData<
     protected override notificationService: NotificationService
   ) {
     super(doctorService, notificationService);
-    console.log(this.data);
   }
 }

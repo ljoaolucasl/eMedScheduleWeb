@@ -8,6 +8,7 @@ import { FormsDoctorViewModel } from '../models/forms-doctor.view.model';
 import { ListDoctorViewModel } from '../models/list-doctor.view.model';
 import { DoctorService } from '../services/doctor.service';
 import { map } from 'rxjs';
+import { NotificationService } from 'src/app/core/notification/services/notification.service';
 
 @Component({
   selector: 'app-update-doctor',
@@ -30,9 +31,10 @@ export class UpdateDoctorComponent
     protected fb: FormBuilder,
     protected doctorService: DoctorService,
     protected override router: Router,
-    protected override route: ActivatedRoute
+    protected override route: ActivatedRoute,
+    protected override notificationService: NotificationService
   ) {
-    super(doctorService, router, route);
+    super(doctorService, router, route, notificationService);
   }
 
   ngOnInit(): void {
@@ -42,7 +44,7 @@ export class UpdateDoctorComponent
       profilePictureBase64: new FormControl(null),
     });
 
-    this.idSelecionado = this.route.snapshot.paramMap.get('id');
+    this.idSelected = this.route.snapshot.paramMap.get('id');
 
     this.route.data.pipe(map((data) => data['doctor'])).subscribe((data) => {
       this.form.patchValue(data);
@@ -50,6 +52,9 @@ export class UpdateDoctorComponent
   }
 
   override processSuccess(doctor: ListDoctorViewModel) {
+    this.notificationService.success(
+      `Doctor '${doctor.name}' was edited successfully!`
+    );
     this.router.navigate(['/doctor/list']);
   }
 
@@ -61,15 +66,16 @@ export class UpdateDoctorComponent
       });
 
     if (this.form.invalid) {
-      //   for (let error of this.form.validate()) {
-      //   }
+      // for (let error of this.form.validate()) {
+      //   this.notificationService.warning(error);
+      // }
 
       return;
     }
 
     const data: FormsDoctorViewModel = this.form.value;
 
-    this.dataService.put(this.idSelecionado!, data).subscribe({
+    this.dataService.put(this.idSelected!, data).subscribe({
       next: (data: ListDoctorViewModel) => this.processSuccess(data),
       error: (error: Error) => this.processError(error),
     });

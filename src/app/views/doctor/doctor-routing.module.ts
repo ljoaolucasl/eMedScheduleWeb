@@ -55,7 +55,7 @@ const routes: Routes = [
     },
   },
   {
-    path: 'detail/:id',
+    path: 'details/:id',
     component: DetailDoctorComponent,
     resolve: {
       doctor: formsDoctorResolverFull,

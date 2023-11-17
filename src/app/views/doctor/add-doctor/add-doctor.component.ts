@@ -7,6 +7,7 @@ import { CompleteDoctorViewModel } from '../models/complete-doctor.view.model';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BreakpointObserverService } from 'src/app/core/mobile-responsive/services/breakpoint-observer.service';
+import { NotificationService } from 'src/app/core/notification/services/notification.service';
 
 @Component({
   selector: 'app-add-doctor',
@@ -25,12 +26,13 @@ export class AddDoctorComponent
   crmMask: string = '00000-AA';
 
   constructor(
-    public breakpointService: BreakpointObserverService,
+    protected breakpointService: BreakpointObserverService,
     protected fb: FormBuilder,
     protected doctorService: DoctorService,
-    protected router: Router
+    protected router: Router,
+    protected override notificationService: NotificationService
   ) {
-    super(doctorService);
+    super(doctorService, notificationService);
   }
 
   ngOnInit(): void {
@@ -42,6 +44,9 @@ export class AddDoctorComponent
   }
 
   override processSuccess(doctor: ListDoctorViewModel) {
+    this.notificationService.success(
+      `Doctor ${doctor.name} has been successfully registered!`
+    );
     this.router.navigate(['/doctor/list']);
   }
 
@@ -53,8 +58,9 @@ export class AddDoctorComponent
       });
 
     if (this.form.invalid) {
-      //   for (let error of this.form.validate()) {
-      //   }
+      // for (let error of this.form.validate()) {
+      //   this.notificationService.warning(error);
+      // }
 
       return;
     }

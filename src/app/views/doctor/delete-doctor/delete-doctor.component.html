@@ -1,1 +1,52 @@
-<p>delete-doctor works!</p>
+<section>
+  <div class="container my-4">
+    <mat-card class="p-4">
+      <mat-card-header class="justify-content-center py-1">
+        <mat-card-title class="primary fs-1 mb-2"
+          >Confirm Deletion</mat-card-title
+        >
+      </mat-card-header>
+      <mat-card-content class="text-center">
+        <p class="card-text fw-medium">You are about to delete the doctor:</p>
+        <img
+          [src]="
+            data.profilePictureBase64 != ''
+              ? 'data:image/png;base64,' + data.profilePictureBase64
+              : 'assets/default-avatar.jpg'
+          "
+          alt="Doctor Profile"
+          class="rounded-circle mb-3"
+          width="150"
+          height="150"
+        />
+        <p class="card-text">
+          <span class="primary fw-medium">Name:</span> {{ data.name }}
+        </p>
+        <p class="card-text">
+          <span class="primary fw-medium">CRM:</span> {{ data.crm }}
+        </p>
+      </mat-card-content>
+
+      <mat-card-actions class="d-grid gap-2 mt-4">
+        <button
+          mat-fab
+          extended
+          type="submit"
+          color="warn"
+          (click)="confirmDeletion()"
+        >
+          <mat-icon>delete</mat-icon> Delete Doctor
+        </button>
+        <button
+          mat-fab
+          extended
+          type="submit"
+          class="bg-secondary"
+          (click)="cancelDeletion()"
+        >
+          Cancel
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section>

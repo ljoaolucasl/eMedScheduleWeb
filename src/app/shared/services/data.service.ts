@@ -51,7 +51,7 @@ export abstract class DataService<TForm, TList, TFull>
 
   getCompleteById(id: string): Observable<TFull> {
     return this.http
-      .get<any>(this.url + this.endpoint + '/view-complete/' + id)
+      .get<any>(this.url + this.endpoint + '/complete-view/' + id)
       .pipe(
         map((res) => res.data),
         catchError((error) => this.processError(error))

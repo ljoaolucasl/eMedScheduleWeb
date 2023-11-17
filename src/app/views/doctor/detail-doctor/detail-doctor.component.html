@@ -1,1 +1,73 @@
-<p>detail-doctor works!</p>
+<div class="container show-none my-4">
+  <mat-card class="mat-elevation-z5 p-2">
+    <mat-card-header class="justify-content-center py-1">
+      <mat-card-title class="primary fs-1 mb-2">Doctor Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="text-center">
+      <img
+        [src]="
+          doctor.profilePictureBase64 != ''
+            ? 'data:image/png;base64,' + doctor.profilePictureBase64
+            : 'assets/default-avatar.jpg'
+        "
+        alt="Doctor Profile"
+        class="rounded-circle mb-3"
+        width="150"
+        height="150"
+      />
+      <p class="card-text">
+        <span class="primary fw-medium">Name:</span> {{ doctor.name }}
+      </p>
+      <p class="card-text">
+        <span class="primary fw-medium">CRM:</span> {{ doctor.crm }}
+      </p>
+      <p class="card-text">
+        <span class="primary fw-medium">Activities:</span>
+        {{ activities.length }}
+      </p>
+    </mat-card-content>
+    <mat-card-title class="container my-3 ms-2 fs-2 accent"
+      >Activities</mat-card-title
+    >
+    <div class="container d-flex flex-row gap-3">
+      <div
+        *ngFor="let activity of activities"
+        class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4"
+      >
+        <mat-card
+          appCardHover
+          [routerLink]="['/compromissos/detalhes', activity.id]"
+          class="mb-4 h-100 rounded mat-elevation-z3"
+        >
+          <mat-card-content>
+            <mat-card-title class="fs-3 mb-3 text-center primary">{{
+              activity.title
+            }}</mat-card-title>
+            <p>
+              <strong class="primary">Type: </strong
+              >{{ activity.activityType == 0 ? "Appointment" : "Surgery" }}
+            </p>
+            <p>
+              <strong class="accent">Date: </strong
+              >{{ activity.date | date : "dd/MM/yyyy" }}
+            </p>
+            <p>
+              <strong class="accent">Start Time: </strong
+              >{{ activity.startTime.substring(0, 5) }}
+            </p>
+            <p>
+              <strong class="accent">End Time: </strong
+              >{{ activity.endTime.substring(0, 5) }}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-card>
+  <app-button-floating
+    [rota]="'/doctor/list'"
+    [nome]="'Back'"
+    [color]="'accent'"
+    [icone]="'home'"
+  ></app-button-floating>
+</div>

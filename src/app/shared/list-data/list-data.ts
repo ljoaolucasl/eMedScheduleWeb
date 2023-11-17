@@ -24,7 +24,6 @@ export abstract class ListData<
     this.dadosService.get().subscribe({
       next: (data) => {
         this.data = data;
-        this.notificationService.success('List loaded successfully!');
       },
       error: (error) => this.processError(error),
       complete: () => {
