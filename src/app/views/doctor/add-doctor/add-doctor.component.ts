@@ -23,7 +23,7 @@ export class AddDoctorComponent
   >
   implements OnInit
 {
-  crmMask: string = '00000-AA';
+  crmMask: string = '00000-LL';
 
   constructor(
     protected breakpointService: BreakpointObserverService,

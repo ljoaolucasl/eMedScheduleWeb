@@ -16,9 +16,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class AuthService {
-  private url: string = 'https://localhost:7069/api/';
+  private url: string = 'https://localhost:7069/api/account/';
   private endpointRegistration: string = 'register';
-  private endpointLogin: string = 'authenticate';
+  private endpointLogin: string = 'login';
   private endpointLogout: string = 'logout';
 
   private authenticatedUser: BehaviorSubject<UserTokenViewModel | undefined>;
@@ -41,7 +41,7 @@ export class AuthService {
       map((res) => res.data),
       tap((data: TokenViewModel) => {
         this.localStorage.saveData(data);
-        this.notifyLogin(data.userToken);
+        this.notifyLogin(data.user);
       }),
       catchError((error) => this.processError(error))
     );
@@ -52,7 +52,7 @@ export class AuthService {
       map((res) => res.data),
       tap((data: TokenViewModel) => {
         this.localStorage.saveData(data);
-        this.notifyLogin(data.userToken);
+        this.notifyLogin(data.user);
       }),
       catchError((error) => this.processError(error))
     );
@@ -60,7 +60,6 @@ export class AuthService {
 
   public logout() {
     return this.http.post<any>(this.url + this.endpointLogout, {}).pipe(
-      map((res) => res.data),
       tap(() => {
         this.localStorage.deleteData();
         this.notifyLogout();
@@ -75,7 +74,7 @@ export class AuthService {
     if (!data) return;
 
     if (new Date(data.expirationDate) > new Date())
-      this.notifyLogin(data!.userToken);
+      this.notifyLogin(data!.user);
   }
 
   public getData(): TokenViewModel | undefined {

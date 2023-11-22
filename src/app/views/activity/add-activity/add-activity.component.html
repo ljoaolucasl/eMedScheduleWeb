@@ -104,7 +104,6 @@
                   {{ form.get("selectedDoctors")?.value[0] || "" }}
                   <span
                     *ngIf="(form.get('selectedDoctors')?.value.length || 0) > 1"
-                    class="example-additional-selection"
                   >
                     (+{{
                       (form.get("selectedDoctors")?.value.length || 0) - 1
@@ -116,9 +115,11 @@
                     }})
                   </span>
                 </mat-select-trigger>
-                <mat-option *ngFor="let doctor of doctors" [value]="doctor">{{
-                  doctor.name
-                }}</mat-option>
+                <mat-option
+                  *ngFor="let doctor of doctors"
+                  [value]="doctor.id"
+                  >{{ doctor.name }}</mat-option
+                >
               </mat-select>
             </mat-form-field>
           </div>

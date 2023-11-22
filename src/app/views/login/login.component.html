@@ -1,1 +1,58 @@
-<p>login works!</p>
+<section class="container shadow-none">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <mat-card class="mat-elevation-z5 rounded-3">
+        <mat-card-content>
+          <mat-card-title class="fs-1 text-center fw-bolder primary mb-4"
+            >e-Med</mat-card-title
+          >
+          <form [formGroup]="form" (ngSubmit)="login()">
+            <div class="mb-3">
+              <mat-form-field class="col-12">
+                <mat-label>Email</mat-label>
+                <input
+                  matInput
+                  id="email"
+                  placeholder="pat@example.com"
+                  formControlName="email"
+                  required
+                />
+                <mat-icon matSuffix>alternate_email</mat-icon>
+                <mat-error *ngIf="this.form.get('email')!.invalid">{{
+                  getErrorMessage()
+                }}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="mb-3">
+              <mat-form-field class="col-12">
+                <mat-label>Password</mat-label>
+                <input
+                  matInput
+                  type="password"
+                  formControlName="password"
+                  [ngClass]="invalidField('password') ? 'is-invalid' : ''"
+                  placeholder="Type your password"
+                />
+                <mat-icon matSuffix>lock</mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="text-center">
+              <button
+                mat-fab
+                extended
+                type="submit"
+                color="primary"
+                class="w-100"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+          <p class="text-center mt-3">
+            <a class="primary" routerLink="/registro">Create new account</a>
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>

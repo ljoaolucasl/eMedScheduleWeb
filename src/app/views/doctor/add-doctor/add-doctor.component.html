@@ -65,48 +65,13 @@
                 formControlName="crm"
                 required
                 id="crm"
-                placeholder="Enter CRM"
+                placeholder="00000-AA"
                 [ngClass]="invalidField('crm') ? 'is-invalid' : ''"
                 [mask]="crmMask"
               />
               <mat-icon matSuffix>code</mat-icon>
             </mat-form-field>
           </div>
-
-          <!-- <div class="mb-3">
-            <mat-form-field class="col-12">
-              <mat-label>Telefone</mat-label>
-              <input
-                matInput
-                formControlName="telefone"
-                required
-                id="telefone"
-                placeholder="Digite o Telefone"
-                [ngClass]="campoInvalido('telefone') ? 'is-invalid' : ''"
-                (input)="atualizarMascara($event)"
-                [mask]="telefoneMask"
-              />
-              <mat-icon matSuffix>phone</mat-icon>
-            </mat-form-field>
-          </div> -->
-
-          <!-- <div class="mb-3">
-            <mat-form-field class="col-12">
-              <mat-label>Type your e-mail</mat-label>
-              <input
-                matInput
-                id="email"
-                placeholder="pat@example.com"
-                formControlName="email"
-                required
-              />
-              <mat-icon matSuffix>alternate_email</mat-icon>
-              <mat-error *ngIf="this.form.get('email')!.invalid">{{
-                getErrorMessage()
-              }}</mat-error>
-            </mat-form-field>
-          </div> -->
-
           <div class="text-center">
             <app-button-floating
               *ngIf="breakpointService.isHandset$ | async"

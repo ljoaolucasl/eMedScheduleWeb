@@ -17,8 +17,6 @@ export abstract class EditData<
 
   constructor(
     protected dataService: TService,
-    protected router: Router,
-    protected route: ActivatedRoute,
     protected notificationService: NotificationService
   ) {}
 

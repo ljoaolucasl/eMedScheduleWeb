@@ -34,26 +34,40 @@
           <mat-icon>calendar_today</mat-icon>Activity
         </button>
       </mat-list-item>
+      <mat-list-item class="p-0">
+        <button
+          class="w-100 rounded-0 warn"
+          mat-fab
+          extended
+          color="theme-color"
+          (click)="logout()"
+        >
+          <mat-icon>logout</mat-icon>Logout
+        </button>
+      </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="theme-color">
       <button
+        *ngIf="(isAuthorized$ | async) == true"
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
       >
-        <!-- *ngIf="(isAuthorized$ | async) == true" -->
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <a class="navbar-brand fw-semibold" routerLink="/">
         <i class="bi bi-calendar-range primary ms-2 fs-4"></i>
-        <span class="mx-2 fs-4 me-4 theme-color">e-Med</span>
+        <span class="primary mx-2 fs-4 me-4">e-Med</span>
       </a>
-
-      <!-- *ngIf="(isAuthorized$ | async) == true && (breakpointService.isHandset$ | async) == false" -->
-      <ng-container *ngIf="(breakpointService.isHandset$ | async) == false">
+      <ng-container
+        *ngIf="
+          (isAuthorized$ | async) == true &&
+          (breakpointService.isHandset$ | async) == false
+        "
+      >
         <div class="links w-100 text-center d-flex gap-3">
           <a
             class="nav-link primary btn"

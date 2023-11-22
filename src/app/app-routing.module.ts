@@ -7,13 +7,13 @@ const routes: Routes = [
     path: 'doctor',
     loadChildren: () =>
       import('./views/doctor/doctor.module').then((d) => d.DoctorModule),
-    // canActivate: [authGuard],
+    canActivate: [authGuard],
   },
   {
     path: 'activity',
     loadChildren: () =>
       import('./views/activity/activity.module').then((d) => d.ActivityModule),
-    // canActivate: [authGuard],
+    canActivate: [authGuard],
   },
 ];
 

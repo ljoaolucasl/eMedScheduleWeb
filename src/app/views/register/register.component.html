@@ -1,1 +1,88 @@
-<p>register works!</p>
+<section class="container shadow-none">
+  <div class="row justify-content-center my-5">
+    <div class="col-md-6">
+      <mat-card class="mat-elevation-z5 rounded-3">
+        <mat-card-content>
+          <mat-card-title class="fs-1 text-center fw-bolder primary mb-4"
+            >Register</mat-card-title
+          >
+          <form [formGroup]="form" (ngSubmit)="register()">
+            <div class="mb-3">
+              <mat-form-field class="col-12">
+                <mat-label>Name</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  id="name"
+                  formControlName="name"
+                  [ngClass]="invalidField('name') ? 'is-invalid' : ''"
+                  placeholder="Type your name"
+                />
+                <mat-icon matSuffix>person</mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="mb-3">
+              <mat-form-field class="col-12">
+                <mat-label>Email</mat-label>
+                <input
+                  matInput
+                  id="email"
+                  placeholder="pat@example.com"
+                  formControlName="email"
+                  required
+                />
+                <mat-icon matSuffix>alternate_email</mat-icon>
+                <mat-error *ngIf="this.form.get('email')!.invalid">{{
+                  getErrorMessage()
+                }}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="mb-3">
+              <mat-form-field class="col-12">
+                <mat-label>Password</mat-label>
+                <input
+                  matInput
+                  type="password"
+                  formControlName="password"
+                  [ngClass]="invalidField('password') ? 'is-invalid' : ''"
+                  placeholder="Type your password"
+                />
+                <mat-icon matSuffix>lock</mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="mb-3">
+              <mat-form-field class="col-12">
+                <mat-label>Confirm Password</mat-label>
+                <input
+                  matInput
+                  type="password"
+                  formControlName="confirmPassword"
+                  [ngClass]="
+                    invalidField('confirmPassword') ? 'is-invalid' : ''
+                  "
+                  placeholder="Confirm your Password"
+                />
+                <mat-icon matSuffix>lock</mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="text-center">
+              <button
+                mat-fab
+                extended
+                type="submit"
+                color="primary"
+                class="w-100"
+              >
+                Register
+              </button>
+            </div>
+          </form>
+          <p class="text-center mt-3">
+            Already have an account?
+            <a class="primary" routerLink="/login">Log in</a>
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>

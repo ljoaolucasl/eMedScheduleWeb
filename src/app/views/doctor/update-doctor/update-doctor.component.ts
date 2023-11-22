@@ -24,17 +24,17 @@ export class UpdateDoctorComponent
   >
   implements OnInit
 {
-  crmMask: string = '00000-AA';
+  crmMask: string = '00000-LL';
 
   constructor(
     public breakpointService: BreakpointObserverService,
     protected fb: FormBuilder,
     protected doctorService: DoctorService,
-    protected override router: Router,
-    protected override route: ActivatedRoute,
+    protected router: Router,
+    protected route: ActivatedRoute,
     protected override notificationService: NotificationService
   ) {
-    super(doctorService, router, route, notificationService);
+    super(doctorService, notificationService);
   }
 
   ngOnInit(): void {

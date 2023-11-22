@@ -31,6 +31,8 @@ export abstract class AddData<
 
     const data: TForm = this.form.value;
 
+    console.log(data);
+
     this.dataService.post(data).subscribe({
       next: (data: TList) => this.processSuccess(data),
       error: (error: Error) => this.processError(error),

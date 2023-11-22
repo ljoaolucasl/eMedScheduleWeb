@@ -9,8 +9,8 @@ export const loginGuard: CanActivateFn = (): Observable<boolean | UrlTree> => {
   return inject(AuthService)
     .getAuthenticatedUser()
     ?.pipe(
-      map((usuario) => {
-        if (usuario) return router.parseUrl('/dashboard');
+      map((user) => {
+        if (user) return router.parseUrl('/dashboard');
         return true;
       })
     );

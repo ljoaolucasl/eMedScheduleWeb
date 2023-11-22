@@ -3,6 +3,7 @@ import { Observable, catchError, map, tap, throwError } from 'rxjs';
 import { IDataService } from '../models/data.interface.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/core/auth/services/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
