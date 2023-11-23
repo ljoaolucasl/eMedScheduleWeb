@@ -4,10 +4,17 @@ import { DoctorService } from '../services/doctor.service';
 import { FormsDoctorViewModel } from '../models/forms-doctor.view.model';
 import { ListDoctorViewModel } from '../models/list-doctor.view.model';
 import { CompleteDoctorViewModel } from '../models/complete-doctor.view.model';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { BreakpointObserverService } from 'src/app/core/mobile-responsive/services/breakpoint-observer.service';
 import { NotificationService } from 'src/app/core/notification/services/notification.service';
+import { DoctorValidator } from '../services/doctor.validator.service';
 
 @Component({
   selector: 'app-add-doctor',
@@ -23,7 +30,7 @@ export class AddDoctorComponent
   >
   implements OnInit
 {
-  crmMask: string = '00000-LL';
+  crmMask: string = '00000-SS';
 
   constructor(
     protected breakpointService: BreakpointObserverService,
@@ -37,8 +44,14 @@ export class AddDoctorComponent
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      name: new FormControl('', [Validators.required]),
-      crm: new FormControl('', [Validators.required]),
+      name: new FormControl('', [
+        Validators.required,
+        DoctorValidator.nameValidator,
+      ]),
+      crm: new FormControl('', [
+        Validators.required,
+        DoctorValidator.crmValidator,
+      ]),
       profilePictureBase64: new FormControl(''),
     });
   }
@@ -101,5 +114,29 @@ export class AddDoctorComponent
     }
 
     return crm;
+  }
+
+  getErrorMessage(name: string) {
+    if (name == 'name') {
+      if (this.form.get('name')!.hasError('required')) {
+        return 'You must enter a value';
+      }
+
+      if (this.form.get('name')!.hasError('invalidName')) {
+        return 'Minimum 3 characters';
+      }
+    }
+
+    if (name == 'crm') {
+      if (this.form.get('crm')!.hasError('required')) {
+        return 'You must enter a value';
+      }
+
+      return this.form.get('crm')!.hasError('invalidCrm')
+        ? 'CRM in invalid format'
+        : '';
+    }
+
+    return '';
   }
 }

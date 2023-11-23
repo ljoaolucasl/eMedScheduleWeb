@@ -12,7 +12,7 @@ import { DoctorService } from './services/doctor.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { CoreModule } from 'src/app/core/core.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ListWorkedDoctorComponent } from './list-worked-doctor/list-worked-doctor.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     UpdateDoctorComponent,
     DeleteDoctorComponent,
     ListDoctorComponent,
+    ListWorkedDoctorComponent,
     DetailDoctorComponent,
   ],
   imports: [

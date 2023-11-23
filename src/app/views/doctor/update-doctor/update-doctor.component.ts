@@ -9,6 +9,7 @@ import { ListDoctorViewModel } from '../models/list-doctor.view.model';
 import { DoctorService } from '../services/doctor.service';
 import { map } from 'rxjs';
 import { NotificationService } from 'src/app/core/notification/services/notification.service';
+import { DoctorValidator } from '../services/doctor.validator.service';
 
 @Component({
   selector: 'app-update-doctor',
@@ -24,7 +25,7 @@ export class UpdateDoctorComponent
   >
   implements OnInit
 {
-  crmMask: string = '00000-LL';
+  crmMask: string = '00000-SS';
 
   constructor(
     public breakpointService: BreakpointObserverService,
@@ -39,8 +40,14 @@ export class UpdateDoctorComponent
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      name: new FormControl('', [Validators.required]),
-      crm: new FormControl('', [Validators.required]),
+      name: new FormControl('', [
+        Validators.required,
+        DoctorValidator.nameValidator,
+      ]),
+      crm: new FormControl('', [
+        Validators.required,
+        DoctorValidator.crmValidator,
+      ]),
       profilePictureBase64: new FormControl(null),
     });
 
@@ -109,5 +116,29 @@ export class UpdateDoctorComponent
     }
 
     return crm;
+  }
+
+  getErrorMessage(name: string) {
+    if (name == 'name') {
+      if (this.form.get('name')!.hasError('required')) {
+        return 'You must enter a value';
+      }
+
+      if (this.form.get('name')!.hasError('invalidName')) {
+        return 'Minimum 3 characters';
+      }
+    }
+
+    if (name == 'crm') {
+      if (this.form.get('crm')!.hasError('required')) {
+        return 'You must enter a value';
+      }
+
+      return this.form.get('crm')!.hasError('invalidCrm')
+        ? 'CRM in invalid format'
+        : '';
+    }
+
+    return '';
   }
 }

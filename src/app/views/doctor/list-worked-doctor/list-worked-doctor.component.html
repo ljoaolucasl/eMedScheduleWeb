@@ -1,0 +1,84 @@
+<section>
+  <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+  <div class="container mt-5">
+    <h1 class="primary">Ranking of Doctors</h1>
+    <p class="fs-5">
+      Classification of doctors who worked the most during the period
+    </p>
+    <div class="d-flex gap-2 mt-3 justify-content-between align-items-center">
+      <mat-form-field appearance="outline">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input
+            [(ngModel)]="startDate"
+            matStartDate
+            placeholder="Start date"
+            (dateChange)="filterDoctors()"
+          />
+          <input
+            [(ngModel)]="endDate"
+            matEndDate
+            placeholder="End date"
+            (dateChange)="filterDoctors()"
+          />
+        </mat-date-range-input>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+
+      <app-button-floating
+        [rota]="'/doctor/list'"
+        [nome]="'Back'"
+        [color]="'accent'"
+        [icone]="'home'"
+      ></app-button-floating>
+    </div>
+
+    <div class="">
+      <div *ngFor="let doctor of list; let i = index" class="mb-4">
+        <mat-card *ngIf="!isLoading" class="mb-4 h-100">
+          <mat-card-header class="p-3 ps-4">
+            <div class="d-flex flex-row gap-3 align-items-center">
+              <img
+                class="img-fluid rounded-circle"
+                [src]="
+                  doctor.profilePictureBase64 != ''
+                    ? 'data:image/png;base64,' + doctor.profilePictureBase64
+                    : 'assets/default-avatar.jpg'
+                "
+                mat-card-image
+                width="100"
+                height="100"
+                alt="Doctor Profile"
+              />
+              <mat-card-title class="mb-1 fs-2">{{
+                doctor.name
+              }}</mat-card-title>
+              <mat-card-subtitle class="fs-3">{{
+                doctor.workedHours
+              }}</mat-card-subtitle>
+            </div>
+
+            <div class="d-flex flex-column ms-auto justify-content-center">
+              <button
+                routerLink="/doctor/details/{{ doctor.id }}"
+                mat-icon-button
+                aria-label="Details"
+                matTooltip="Details"
+                matTooltipPosition="below"
+              >
+                <mat-icon>more_vert</mat-icon>
+              </button>
+            </div>
+          </mat-card-header>
+          <mat-card-subtitle class="position-absolute m-1"
+            >#{{ i + 1 }}</mat-card-subtitle
+          >
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</section>

@@ -13,6 +13,7 @@ import { AddDoctorComponent } from './add-doctor/add-doctor.component';
 import { UpdateDoctorComponent } from './update-doctor/update-doctor.component';
 import { DeleteDoctorComponent } from './delete-doctor/delete-doctor.component';
 import { DetailDoctorComponent } from './detail-doctor/detail-doctor.component';
+import { ListWorkedDoctorComponent } from './list-worked-doctor/list-worked-doctor.component';
 
 const formsDoctorResolver: ResolveFn<FormsDoctorViewModel> = (
   route: ActivatedRouteSnapshot
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: 'list',
     component: ListDoctorComponent,
+  },
+  {
+    path: 'list_worked',
+    component: ListWorkedDoctorComponent,
   },
   {
     path: 'add',

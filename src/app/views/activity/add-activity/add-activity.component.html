@@ -17,7 +17,10 @@
                 [ngClass]="invalidField('title') ? 'is-invalid' : ''"
                 placeholder="Enter Title"
               ></textarea>
-              <mat-icon matSuffix>person</mat-icon>
+              <mat-icon matSuffix>listalt</mat-icon>
+              <mat-error *ngIf="this.form.get('title')!.invalid">{{
+                getErrorMessage("title")
+              }}</mat-error>
             </mat-form-field>
           </div>
 
@@ -33,7 +36,10 @@
                 [ngClass]="invalidField('startTime') ? 'is-invalid' : ''"
                 placeholder="Enter Start Time"
               />
-              <mat-icon matSuffix>person</mat-icon>
+              <mat-icon matSuffix>schedule</mat-icon>
+              <mat-error *ngIf="this.form.get('startTime')!.invalid">{{
+                getErrorMessage("startTime")
+              }}</mat-error>
             </mat-form-field>
           </div>
 
@@ -49,7 +55,10 @@
                 [ngClass]="invalidField('endTime') ? 'is-invalid' : ''"
                 placeholder="Enter End Time"
               />
-              <mat-icon matSuffix>person</mat-icon>
+              <mat-icon matSuffix>schedule</mat-icon>
+              <mat-error *ngIf="this.form.get('endTime')!.invalid">{{
+                getErrorMessage("endTime")
+              }}</mat-error>
             </mat-form-field>
           </div>
 
@@ -70,6 +79,9 @@
                 [for]="picker"
               ></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="this.form.get('date')!.invalid">{{
+                getErrorMessage("date")
+              }}</mat-error>
             </mat-form-field>
           </div>
 
@@ -86,6 +98,10 @@
                 <mat-option [value]="0">Appointment</mat-option>
                 <mat-option [value]="1">Surgery</mat-option>
               </mat-select>
+              <mat-icon matSuffix>local_hospital</mat-icon>
+              <mat-error *ngIf="this.form.get('activityType')!.invalid">{{
+                getErrorMessage("activityType")
+              }}</mat-error>
             </mat-form-field>
           </div>
 
@@ -121,6 +137,10 @@
                   >{{ doctor.name }}</mat-option
                 >
               </mat-select>
+              <mat-icon matSuffix>group</mat-icon>
+              <mat-error *ngIf="this.form.get('selectedDoctors')!.invalid">{{
+                getErrorMessage("selectedDoctors")
+              }}</mat-error>
             </mat-form-field>
           </div>
 

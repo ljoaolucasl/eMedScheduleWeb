@@ -57,4 +57,24 @@ export class AddActivityComponent
     );
     this.router.navigate(['/activity/list']);
   }
+
+  getErrorMessage(name: string) {
+    if (this.form.get(name)!.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    if (name == 'name') {
+      if (this.form.get(name)!.hasError('invalidName')) {
+        return 'Minimum 3 characters';
+      }
+    }
+
+    if (name == 'crm') {
+      return this.form.get(name)!.hasError('invalidCrm')
+        ? 'CRM in invalid format'
+        : '';
+    }
+
+    return '';
+  }
 }

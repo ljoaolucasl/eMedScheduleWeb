@@ -34,31 +34,31 @@
     <mat-card-title class="container my-3 ms-2 fs-2 accent"
       >Doctors</mat-card-title
     >
-    <div class="container d-flex flex-row gap-3">
+    <div class="row m-3">
       <div
         *ngFor="let doctor of doctors"
-        class="col-lg-3 col-md-4 col-sm-12 col-12 mb-4"
+        class="col-lg-3 col-md-4 col-sm-8 col-12 mb-4"
       >
         <mat-card
           appCardHover
-          class="mb-4 h-100 rounded mat-elevation-z3 p-0"
+          class="mb-2 h-100 rounded mat-elevation-z3 p-3"
           [routerLink]="['/doctor/details', doctor.id]"
         >
-          <mat-card-header>
-            <div mat-card-avatar>
-              <img
-                class="img-fluid rounded-circle mt-2"
-                [src]="
-                  doctor.profilePictureBase64 != ''
-                    ? 'data:image/png;base64,' + doctor.profilePictureBase64
-                    : 'assets/default-avatar.jpg'
-                "
-                mat-card-image
-                alt="Doctor Profile"
-              />
-            </div>
-            <mat-card-title class="mt-3">{{ doctor.name }}</mat-card-title>
-          </mat-card-header>
+          <div class="d-flex flex-column gap-3 align-items-center">
+            <img
+              class="rounded-circle mt-3"
+              [src]="
+                doctor.profilePictureBase64 != ''
+                  ? 'data:image/png;base64,' + doctor.profilePictureBase64
+                  : 'assets/default-avatar.jpg'
+              "
+              mat-card-image
+              width="125"
+              height="125"
+              alt="Doctor Profile"
+            />
+            <mat-card-title class="mt-1 fs-4">{{ doctor.name }}</mat-card-title>
+          </div>
         </mat-card>
       </div>
     </div>

@@ -1,11 +1,14 @@
 <mat-card appCardHover class="mb-4 h-100">
-  <mat-card-header>
+  <mat-card-header routerLink="/activity/details/{{ activity.id }}">
     <mat-card-title class="mb-1 fs-5">{{ activity.title }}</mat-card-title>
     <mat-card-title class="my-2 primary fw-medium">{{
       activity.activityType == 0 ? "Appointment" : "Surgery"
     }}</mat-card-title>
   </mat-card-header>
-  <mat-card-content class="d-grid gap-2">
+  <mat-card-content
+    class="d-grid gap-2"
+    routerLink="/activity/details/{{ activity.id }}"
+  >
     <mat-card-subtitle class="fw-medium"
       >Date:
       <span class="theme-color">{{

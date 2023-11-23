@@ -54,6 +54,9 @@
                 placeholder="Enter Name"
               />
               <mat-icon matSuffix>person</mat-icon>
+              <mat-error *ngIf="this.form.get('name')!.invalid">{{
+                getErrorMessage("name")
+              }}</mat-error>
             </mat-form-field>
           </div>
 
@@ -70,6 +73,9 @@
                 [mask]="crmMask"
               />
               <mat-icon matSuffix>code</mat-icon>
+              <mat-error *ngIf="this.form.get('crm')!.invalid">{{
+                getErrorMessage("crm")
+              }}</mat-error>
             </mat-form-field>
           </div>
 

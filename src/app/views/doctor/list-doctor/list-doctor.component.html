@@ -13,11 +13,29 @@
       >
         <mat-icon>add_circle_outline</mat-icon> New Doctor
       </button>
+      <button
+        *ngIf="!(breakpointService.isHandset$ | async)"
+        routerLink="/doctor/list_worked"
+        mat-fab
+        extended
+        color="accent"
+        class=""
+      >
+        <mat-icon>star</mat-icon> Worked Hours
+      </button>
       <app-button-floating
         *ngIf="breakpointService.isHandset$ | async"
         [nome]="'New Doctor'"
         [icone]="'add'"
         [rota]="'/doctor/add'"
+        ><app-button-floating
+          *ngIf="breakpointService.isHandset$ | async"
+          [multi]="true"
+          [color]="'accent'"
+          [nome]="'Worked Hours'"
+          [icone]="'star'"
+          [rota]="'/doctor/list_worked'"
+        ></app-button-floating
       ></app-button-floating>
     </div>
 
