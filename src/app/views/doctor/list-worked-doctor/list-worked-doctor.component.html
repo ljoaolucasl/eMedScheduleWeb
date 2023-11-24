@@ -39,11 +39,16 @@
 
     <div class="">
       <div *ngFor="let doctor of list; let i = index" class="mb-4">
-        <mat-card *ngIf="!isLoading" class="mb-4 h-100">
+        <mat-card
+          routerLink="/doctor/details/{{ doctor.id }}"
+          appCardHover
+          *ngIf="!isLoading"
+          class="mb-4 h-100"
+        >
           <mat-card-header class="p-3 ps-4">
             <div class="d-flex flex-row gap-3 align-items-center">
               <img
-                class="img-fluid rounded-circle"
+                class="rounded-circle"
                 [src]="
                   doctor.profilePictureBase64 != ''
                     ? 'data:image/png;base64,' + doctor.profilePictureBase64
@@ -64,6 +69,7 @@
 
             <div class="d-flex flex-column ms-auto justify-content-center">
               <button
+                *ngIf="(breakpointService.isHandset$ | async) == false"
                 routerLink="/doctor/details/{{ doctor.id }}"
                 mat-icon-button
                 aria-label="Details"

@@ -12,6 +12,7 @@
                 <mat-label>Email</mat-label>
                 <input
                   matInput
+                  data-cy="txtEmail"
                   id="email"
                   placeholder="pat@example.com"
                   formControlName="email"
@@ -19,7 +20,7 @@
                 />
                 <mat-icon matSuffix>alternate_email</mat-icon>
                 <mat-error *ngIf="this.form.get('email')!.invalid">{{
-                  getErrorMessage()
+                  getErrorMessage("email")
                 }}</mat-error>
               </mat-form-field>
             </div>
@@ -28,18 +29,23 @@
                 <mat-label>Password</mat-label>
                 <input
                   matInput
+                  data-cy="txtPassword"
                   type="password"
                   formControlName="password"
                   [ngClass]="invalidField('password') ? 'is-invalid' : ''"
                   placeholder="Type your password"
                 />
                 <mat-icon matSuffix>lock</mat-icon>
+                <mat-error *ngIf="this.form.get('password')!.invalid">{{
+                  getErrorMessage("password")
+                }}</mat-error>
               </mat-form-field>
             </div>
             <div class="text-center">
               <button
                 mat-fab
                 extended
+                data-cy="btnLogin"
                 type="submit"
                 color="primary"
                 class="w-100"

@@ -14,9 +14,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
+import { BackgroundComponent } from './background/background.component';
 
 @NgModule({
-  declarations: [CardHoverDirective, ButtonFloatingComponent],
+  declarations: [
+    CardHoverDirective,
+    ButtonFloatingComponent,
+    BackgroundComponent,
+  ],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -35,6 +40,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatCardModule,
     MatProgressBarModule,
     ButtonFloatingComponent,
+    BackgroundComponent,
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,

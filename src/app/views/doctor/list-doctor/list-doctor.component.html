@@ -6,6 +6,7 @@
       <button
         *ngIf="!(breakpointService.isHandset$ | async)"
         routerLink="/doctor/add"
+        data-cy="btnAdd"
         mat-fab
         extended
         color="primary"

@@ -30,6 +30,7 @@
               />
 
               <button
+                data-cy="btnImage"
                 mat-mini-fab
                 type="button"
                 color="primary"
@@ -45,6 +46,7 @@
             <mat-form-field class="col-12">
               <mat-label>Name</mat-label>
               <input
+                data-cy="txtName"
                 matInput
                 type="text"
                 id="name"
@@ -64,6 +66,7 @@
             <mat-form-field class="col-12">
               <mat-label>CRM</mat-label>
               <input
+                data-cy="txtCRM"
                 matInput
                 formControlName="crm"
                 required
@@ -94,6 +97,7 @@
               ></app-button-floating
             ></app-button-floating>
             <button
+              data-cy="btnAdd"
               *ngIf="!(breakpointService.isHandset$ | async)"
               mat-fab
               extended

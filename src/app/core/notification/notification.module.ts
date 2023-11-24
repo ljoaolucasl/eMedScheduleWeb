@@ -16,7 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: {
-        duration: 3000,
+        duration: 5000,
         horizontalPosition: 'center',
       },
     },

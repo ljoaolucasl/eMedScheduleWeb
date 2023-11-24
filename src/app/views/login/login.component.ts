@@ -45,8 +45,12 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  getErrorMessage() {
-    if (this.form.get('email')!.hasError('required')) {
+  getErrorMessage(name: string) {
+    if (this.form.get(name)!.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    if (this.form.get('password')!.hasError('minLength')) {
       return 'You must enter a value';
     }
 

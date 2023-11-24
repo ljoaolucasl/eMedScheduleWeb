@@ -2,13 +2,15 @@
   <mat-card-header routerLink="/doctor/details/{{ doctor.id }}">
     <div mat-card-avatar>
       <img
-        class="img-fluid rounded-circle"
+        class="rounded-circle"
         [src]="
           doctor.profilePictureBase64 != ''
             ? 'data:image/png;base64,' + doctor.profilePictureBase64
             : 'assets/default-avatar.jpg'
         "
         mat-card-image
+        width="45"
+        height="45"
         alt="Doctor Profile"
       />
     </div>
@@ -26,6 +28,7 @@
       <mat-icon>edit</mat-icon>
     </button>
     <button
+      data-cy="btnRemove"
       routerLink="/doctor/delete/{{ doctor.id }}"
       mat-icon-button
       aria-label="Delete"

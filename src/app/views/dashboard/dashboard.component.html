@@ -1,13 +1,21 @@
-<section class="mt-5">
-  <div class="container">
+<div class="">
+  <img
+    [src]="'assets/background.jpg'"
+    alt="Background image"
+    class="background img-fluid"
+  />
+</div>
+<div><section class="content-section"></section></div>
+<section class="">
+  <div class="container mt-4">
     <mat-card class="mat-elevation-z2 mat-bg-container">
       <mat-card-content class="d-flex flex-row row align-items-center gy-3 p-5">
-        <div class="col-lg-7 col-md-6 col-12 mb-4">
+        <div class="col-lg-6 col-md-5 col-12 mb-4">
           <mat-card-title class="fw-semibold fs-1 primary"
             >User Panel</mat-card-title
           >
           <mat-card-title class="fw-semibold fs-2 primary">
-            Welcome, {{ (user$ | async)?.name }}!
+            Welcome, <span class="welcome">{{ (user$ | async)?.name }}!</span>
           </mat-card-title>
           <mat-card-content class="my-4 theme-color">
             <span class="fw-medium">eMed</span> seeks simplicity and efficiency,
@@ -16,29 +24,51 @@
             facilitating organization and optimizing efficiency.
             <span class="fw-medium">What do you want to manage?</span>
           </mat-card-content>
-          <section id="buttons" class="d-grid gap-3">
-            <button
-              routerLink="/doctor/list"
-              mat-fab
-              extended
-              color="primary"
-              class="mx-2"
+          <section id="buttons" class="d-grid gap-3 mt-3">
+            <ul
+              class="d-flex gap-3 m-0 p-0 flex-column flex-md-row flex-lg-row flex-xxl-row"
             >
-              <mat-icon>groups</mat-icon> Doctors
-            </button>
-            <button
-              routerLink="/activity/list"
-              mat-fab
-              extended
-              color="primary"
-              class="mx-2"
-            >
-              <mat-icon>calendar_month</mat-icon> Activities
-            </button>
+              <button
+                routerLink="/doctor/list"
+                mat-fab
+                extended
+                color="primary"
+                data-cy="btnDoctor"
+                class="ag-offer_item pe-3 p-md-5 p-lg-5"
+              >
+                <div class="ag-offer_visible-item d-flex gap-2">
+                  <mat-icon>groups</mat-icon>
+                  <div class="ag-offer_title fs-5">Doctors</div>
+                </div>
+                <div class="ag-offer_hidden-item">
+                  <p class="ag-offer_text mt-2 text-center">
+                    Manage and register new doctors.
+                  </p>
+                </div>
+              </button>
+              <button
+                routerLink="/activity/list"
+                mat-fab
+                extended
+                color="primary"
+                data-cy="btnActivity"
+                class="ag-offer_item p-3 p-md-5 p-lg-5"
+              >
+                <div class="ag-offer_visible-item d-flex gap-2">
+                  <mat-icon>calendar_month</mat-icon>
+                  <div class="ag-offer_title fs-5">Activities</div>
+                </div>
+                <div class="ag-offer_hidden-item">
+                  <p class="ag-offer_text mb-2 text-center">
+                    Manage and register new activities.
+                  </p>
+                </div>
+              </button>
+            </ul>
           </section>
         </div>
-        <div class="col-12 col-lg-5 col-md-6">
-          <!-- <img src="assets/dashboard-image.svg" class="img-fluid" /> -->
+        <div class="col-12 col-lg-6 col-md-7">
+          <img src="assets/dashboard.svg" class="img-fluid" />
         </div>
       </mat-card-content>
     </mat-card>

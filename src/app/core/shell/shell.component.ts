@@ -7,11 +7,12 @@ import {
   ViewChild,
   inject,
 } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable, map, shareReplay } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
+import { Observable, filter, map, shareReplay } from 'rxjs';
 import { AuthService } from '../auth/services/auth.service';
 import { ThemeService } from '../theme/services/theme.service';
 import { BreakpointObserverService } from '../mobile-responsive/services/breakpoint-observer.service';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-shell',
@@ -28,6 +29,8 @@ export class ShellComponent implements OnInit, AfterViewInit {
     private router: Router,
     private themeService: ThemeService
   ) {}
+
+  @ViewChild('drawer') sidebar!: MatSidenav;
 
   @ViewChild('themeSwitch', { read: ElementRef }) element:
     | ElementRef
@@ -47,6 +50,10 @@ export class ShellComponent implements OnInit, AfterViewInit {
         .querySelector('.mdc-switch__icon--off')
         .firstChild.setAttribute('d', this.dark);
     }
+
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => this.sidebar.close());
   }
 
   ngOnInit(): void {

@@ -36,6 +36,7 @@
       </mat-list-item>
       <mat-list-item class="p-0">
         <button
+          data-cy="btnLogout"
           class="w-100 rounded-0 warn"
           mat-fab
           extended
@@ -48,7 +49,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="theme-color">
+    <mat-toolbar class="bg-theme-color-secondary">
       <button
         *ngIf="(isAuthorized$ | async) == true"
         type="button"
@@ -59,8 +60,8 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <a class="navbar-brand fw-semibold" routerLink="/">
-        <i class="bi bi-calendar-range primary ms-2 fs-4"></i>
-        <span class="primary mx-2 fs-4 me-4">e-Med</span>
+        <i class="bi bi-calendar-range primary-alternative ms-2 fs-4"></i>
+        <span class="primary-alternative mx-2 fs-4 me-4">e-Med</span>
       </a>
       <ng-container
         *ngIf="
@@ -70,14 +71,14 @@
       >
         <div class="links w-100 text-center d-flex gap-3">
           <a
-            class="nav-link primary btn"
+            class="nav-link primary-alternative btn"
             routerLinkActive="fw-medium theme-color"
             routerLink="/doctor/list"
           >
             Doctor
           </a>
           <a
-            class="nav-link primary btn"
+            class="nav-link primary-alternative btn"
             routerLinkActive="fw-medium theme-color"
             routerLink="/activity/list"
           >
