@@ -13,10 +13,11 @@ import { TokenViewModel } from '../models/token.view-model';
 import { UserTokenViewModel } from '../models/user-token.view-model';
 import { LocalStorageService } from './local-storage.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthService {
-  private url: string = 'https://localhost:7069/api/account/';
+  private url: string = `${environment.accessToken}/api/account/`;
   private endpointRegistration: string = 'register';
   private endpointLogin: string = 'login';
   private endpointLogout: string = 'logout';
