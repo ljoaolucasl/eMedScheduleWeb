@@ -1,4 +1,4 @@
-describe('Testando cadastro de doctors', () => {
+describe('Testando exclusão de doctors', () => {
   before(() => {
     cy.login('joao@gmail.com', 'Joao@123');
     cy.addDoctor();

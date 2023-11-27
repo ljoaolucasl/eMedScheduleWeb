@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export abstract class DataService<TForm, TList, TFull>
   implements IDataService<TForm, TList, TFull>
 {
-  protected url: string = 'https://localhost:7069/api/';
+  protected url: string = `${environment.accessToken}/api/`;
   abstract endpoint: string;
 
   constructor(protected http: HttpClient, protected authService: AuthService) {}

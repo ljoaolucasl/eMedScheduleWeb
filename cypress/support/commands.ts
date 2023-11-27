@@ -3,6 +3,7 @@ declare namespace Cypress {
     login(email: string, password: string): typeof login;
     logout(): typeof logout;
     addDoctor(): typeof addDoctor;
+    removeDoctor(): typeof removeDoctor;
   }
 }
 
@@ -26,9 +27,7 @@ function login(email: string, password: string) {
 
 function logout() {
   cy.visit('/');
-  cy.get('[mat-ripple-loader-class-name=mat-mdc-button-ripple]')
-    .first()
-    .click();
+  cy.get('mat-toolbar > .mat-mdc-icon-button').first().click();
   cy.get('[data-cy=btnLogout]').click();
   cy.url().should('contain', 'login');
 }
@@ -46,6 +45,17 @@ function addDoctor() {
   cy.url().should('contain', '/doctor/list');
 }
 
+function removeDoctor() {
+  cy.login('joao@gmail.com', 'Joao@123');
+  cy.get('[data-cy=btnDoctor]').click();
+  cy.wait(3000);
+  cy.get('[data-cy=btnRemove]').first().click();
+  cy.get('[data-cy=btnDelete]').click();
+  cy.url().should('contain', '/doctor/list');
+  cy.contains('has been successfully deleted!');
+}
+
 Cypress.Commands.add('login', login);
 Cypress.Commands.add('logout', logout);
 Cypress.Commands.add('addDoctor', addDoctor);
+Cypress.Commands.add('removeDoctor', removeDoctor);
