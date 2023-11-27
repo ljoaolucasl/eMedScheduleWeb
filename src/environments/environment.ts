@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,
-  accessToken: 'https://localhost:7069',
+  production: true,
+  accessToken: 'https://e-med-api.onrender.com',
 };
