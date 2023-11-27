@@ -6,7 +6,8 @@
     <mat-card-content class="text-center">
       <img
         [src]="
-          doctor.profilePictureBase64 != ''
+          doctor.profilePictureBase64 != '' &&
+          doctor.profilePictureBase64 != null
             ? 'data:image/png;base64,' + doctor.profilePictureBase64
             : 'assets/default-avatar.jpg'
         "

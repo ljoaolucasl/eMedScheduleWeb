@@ -18,7 +18,8 @@
 
               <img
                 [src]="
-                  this.form.get('profilePictureBase64')?.value != ''
+                  this.form.get('profilePictureBase64')?.value != '' &&
+                  this.form.get('profilePictureBase64')?.value != null
                     ? 'data:image/png;base64,' +
                       this.form.get('profilePictureBase64')?.value
                     : 'assets/default-avatar.jpg'

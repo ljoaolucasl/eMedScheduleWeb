@@ -10,7 +10,7 @@
         <p class="card-text fw-medium">You are about to delete the doctor:</p>
         <img
           [src]="
-            data.profilePictureBase64 != ''
+            data.profilePictureBase64 != '' && data.profilePictureBase64 != null
               ? 'data:image/png;base64,' + data.profilePictureBase64
               : 'assets/default-avatar.jpg'
           "
