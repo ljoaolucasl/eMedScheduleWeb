@@ -4,6 +4,8 @@
 
 eMedScheduleWeb is a web application developed at the end of the Academy of Programmers 2023 course. Its purpose is to organize and maintain a clinic's schedule of medical activities. The application allows you to schedule medical appointments and surgeries, managing doctors and their working hours efficiently.
 
+eMedScheduleWeb is the web part, if you want to view the Api, follow the link:: [eMedSchedule](https://github.com/ljoaolucasl/eMedSchedule)
+
 ## Demo
 
 - [eMedScheduleWeb](https://ljoaolucasl.github.io/eMedScheduleWeb/login)
